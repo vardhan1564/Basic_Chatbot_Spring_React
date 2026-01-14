@@ -46,7 +46,7 @@ The application follows a **Decoupled Client-Server Architecture** to ensure sca
    spring.datasource.password=your_password
    # API Key for Groq Cloud
    api.groq.key=YOUR_API_KEY_HERE
- 4. Run the backend: mvn 'spring-boot:run'
+ 4. Run the backend: `mvn spring-boot:run`
  
 ## 3. Frontend (React)
 
