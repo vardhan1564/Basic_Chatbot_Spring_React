@@ -40,7 +40,7 @@ A full-stack Chatbot Platform that allows users to create custom AI Agents with 
    api.groq.key=YOUR_API_KEY_HERE
  4.Run the backend: mvn spring-boot:run
  
-## 4. Frontend (React)
+## 3. Frontend (React)
 
 1. Navigate to the frontend directory: `cd frontend`
 2. Install dependencies: `npm install`
