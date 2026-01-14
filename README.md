@@ -38,3 +38,13 @@ A full-stack Chatbot Platform that allows users to create custom AI Agents with 
    spring.datasource.password=your_password
    # API Key for Groq Cloud
    api.groq.key=YOUR_API_KEY_HERE
+4.Run the backend: mvn spring-boot:run
+
+### 4.Frontend (React)
+1.Navigate to the frontend directory.
+2.Install dependencies: npm install
+3.Start the dev server: npm run dev
+4.Access the app at http://localhost:5173.
+
+### Final Submission Notes
+This project was developed as a minimal version of a Chatbot Platform, focusing on performance, reliability, and security. It demonstrates the ability to integrate external LLM services with a robust Java backend and a dynamic React frontend.
