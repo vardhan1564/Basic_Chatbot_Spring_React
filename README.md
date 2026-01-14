@@ -16,6 +16,14 @@ A full-stack Chatbot Platform that allows users to create custom AI Agents with 
 * **Database**: MySQL for user and agent persistence.
 * **AI Model**: Llama 3.1-70b via Groq Cloud.
 
+## 🏗️ Architecture & Design
+The application follows a **Decoupled Client-Server Architecture** to ensure scalability and separation of concerns:
+
+1.  **Stateless Session Design**: To ensure high accuracy and prevent "hallucinations," we implemented a memory-less approach where the AI context is focused solely on the user's current project prompt.
+2.  **Security Layer**: A custom JWT Security Filter in Spring Boot intercepts requests to protected routes, verifying the user's token before allowing access to agents or chat history.
+3.  **Extensibility**: The system is designed to allow future additions, such as multi-file uploads or advanced analytics, by simply extending the database schema and API controllers.
+
+
 ## 📋 Prerequisites
 * Java 17 or higher
 * Node.js (v18+)
