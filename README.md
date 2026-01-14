@@ -23,6 +23,21 @@ The application follows a **Decoupled Client-Server Architecture** to ensure sca
 2.  **Security Layer**: A custom JWT Security Filter in Spring Boot intercepts requests to protected routes, verifying the user's token before allowing access to agents or chat history.
 3.  **Extensibility**: The system is designed to allow future additions, such as multi-file uploads or advanced analytics, by simply extending the database schema and API controllers.
 
+## 🛠️ Technical Highlights
+
+### 1. High-Performance LLM Integration (Groq + Llama 3.1)
+The platform integrates the **Groq Cloud API** to leverage its LPU (Language Processing Unit) inference engine, providing near-instantaneous responses from the **Llama 3.1-70b** model. 
+* **Stateless Prompting**: To ensure high accuracy, each request is sent as a independent interaction, allowing the agent to focus strictly on the provided System Prompt without interference from past "hallucinations".
+* **System Prompt Injection**: Every chat session dynamically injects the user-defined project instructions (e.g., "You are a strict Java tutor") into the API payload to define the AI's personality and boundaries.
+
+### 2. Reliability & Error Handling
+To ensure a seamless user experience, the backend includes a **Reliability Layer**:
+* **Smart Fallback**: If the external API reaches rate limits or becomes unavailable, the system automatically triggers a localized "Smart Mock" engine to provide a helpful response instead of an error message.
+* **Graceful Degradation**: The frontend is designed to handle API latencies with intuitive loading states, ensuring the UI remains responsive even during heavy processing.
+
+### 3. Secure Session Management
+* **JWT-Based Auth**: We implemented a stateless authentication mechanism using **JSON Web Tokens**. This allows the backend to verify the user's identity on every API call without storing session data on the server, enhancing scalability.
+* **Cross-Origin Security**: Configured CORS (Cross-Origin Resource Sharing) policies to allow secure communication only between the trusted React frontend and Spring Boot backend.
 
 ## 📋 Prerequisites
 * Java 17 or higher
