@@ -1,0 +1,232 @@
+/* src/styles/global.css */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg: #f3f4f6;
+  --white: #ffffff;
+  --text: #1f2937;
+  --border: #e5e7eb;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg); color: var(--text); min-height: 100vh; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* --- Auth Pages (Login/Register) --- */
+.auth-wrapper {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: 100vh; 
+  width: 100%;
+}
+
+.auth-box {
+  background: var(--white); 
+  padding: 2.5rem; 
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+  width: 100%; 
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-box form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+}
+
+/* --- Dashboard Header --- */
+.dashboard-header {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 2rem; 
+  padding-bottom: 1rem; 
+  border-bottom: 1px solid var(--border);
+}
+
+.header-buttons { display: flex; gap: 10px; }
+
+/* --- Buttons --- */
+button, .btn {
+  padding: 10px 20px; 
+  border-radius: 8px; 
+  border: none;
+  cursor: pointer; 
+  font-weight: 600; 
+  transition: 0.2s;
+  width: fit-content; 
+}
+
+button[type="submit"] { width: 100%; }
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-hover); }
+
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { background: var(--danger-hover); }
+
+/* --- Project Grid --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.project-card:hover { transform: translateY(-5px); }
+
+/* --- Chat Interface --- */
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.chat-history {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f9fafb;
+}
+
+.message {
+  max-width: 80%;
+  padding: 12px 18px;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--primary);
+  color: white;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: #e5e7eb;
+  color: var(--text);
+}
+
+.chat-input-area {
+  display: flex; 
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.chat-input-area input {
+  flex: 1;
+  margin-bottom: 0; 
+}
+
+.chat-input-area button { width: 100px; }
+
+/* --- AI Structured Content Styling --- */
+.message.assistant h1, .message.assistant h2, .message.assistant h3 {
+  margin: 10px 0;
+  color: #111827;
+}
+
+.message ul, .message ol {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.message li { margin-bottom: 5px; }
+
+.message strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+/* Inline code (words inside a sentence) */
+.message code {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #ef4444; /* Distinguishable color for inline code */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
+
+/* Multi-line code blocks (Fixes visibility) */
+.message pre {
+  background-color: #1f2937; /* Dark background */
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 10px 0;
+  border: 1px solid #374151;
+}
+
+/* Ensures text inside the pre block is white */
+.message pre code {
+  background-color: transparent;
+  color: #f9fafb !important; /* High contrast text */
+  padding: 0;
+  font-weight: 400;
+  display: block;
+}
+
+/* --- Modal Styling --- */
+.modal-overlay {
+  position: fixed; 
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--white); 
+  padding: 2rem; 
+  border-radius: 12px;
+  width: 100%; 
+  max-width: 500px;
+}
+
+/* --- General Forms --- */
+input, textarea {
+  width: 100%; 
+  padding: 12px; 
+  border: 1px solid var(--border);
+  border-radius: 8px; 
+  margin-bottom: 10px; 
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus { border-color: var(--primary); }
+textarea { height: 120px; resize: none; }
