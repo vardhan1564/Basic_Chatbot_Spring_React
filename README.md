@@ -70,5 +70,18 @@ To ensure a seamless user experience, the backend includes a **Reliability Layer
 3. Start the dev server: `npm run dev`
 4. Access the app at: http://localhost:5173
 
+## 📸 Project Screenshots
+
+### 1. User Authentication (Login)
+![Login Page](./screenshots/Login.png)
+
+### 2. Dashboard & Agent Management
+![Dashboard](./screenshots/Dashboard.png)
+
+### 3. AI Chat Session (Markdown & Code Blocks)
+![Chat Session](./screenshots/Chat_Response_1.png)
+![Chat Session](./screenshots/Chat_Response_2.png)
+![Chat Session](./screenshots/Chat_Response_3.png)
+
 ### Final Submission Notes
 This project was developed as a minimal version of a Chatbot Platform, focusing on performance, reliability, and security. It demonstrates the ability to integrate external LLM services with a robust Java backend and a dynamic React frontend.
