@@ -25,7 +25,7 @@ A full-stack Chatbot Platform that allows users to create custom AI Agents with 
 ## ⚙️ Setup & Installation
 
 ### 1. Database Configuration
-1. Create a database named `chatbot_db` in MySQL.
+1. Create a database named `chatbot_platform` in MySQL.
 2. Update your credentials in the backend configuration.
 
 ### 2. Backend (Spring Boot)
@@ -33,7 +33,7 @@ A full-stack Chatbot Platform that allows users to create custom AI Agents with 
 2. Open `src/main/resources/application.properties`.
 3. Configure your MySQL credentials and add your API key:
    ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/chatbot_db
+   spring.datasource.url=jdbc:mysql://localhost:3306/chatbot_platform
    spring.datasource.username=your_username
    spring.datasource.password=your_password
    # API Key for Groq Cloud
