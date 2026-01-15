@@ -1,11 +1,11 @@
-# Stage 1: Build the application using Maven
-FROM maven:3.8.5-openjdk-17 AS build
+# Stage 1: Build using Maven and Eclipse Temurin
+FROM maven:3.8.5-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the application using a slim Java runtime
-FROM openjdk:17-jdk-slim
+# Stage 2: Run using a valid Eclipse Temurin Java runtime
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
