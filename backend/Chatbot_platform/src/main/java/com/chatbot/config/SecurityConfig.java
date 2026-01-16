@@ -21,7 +21,7 @@ import java.util.List;
 public class SecurityConfig {
 
     @Autowired
-    private JwtAuthFilter jwtAuthFilter; // 👈 Inject the filter here
+    private JwtAuthFilter jwtAuthFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -29,9 +29,17 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) 
             .cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(List.of("http://localhost:5173")); // React Frontend
+                
+                // ADD YOUR VERCEL URLS HERE
+                config.setAllowedOrigins(List.of(
+                    "http://localhost:5173", 
+                    "https://chatbotspring.vercel.app",
+                    "https://chatbotspring-git-main-vardhan-adhelis-projects.vercel.app"
+                )); 
+                
                 config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(List.of("*"));
+                config.setAllowCredentials(true); // Crucial for JWT and Cookies
                 return config;
             }))
             .authorizeHttpRequests(auth -> auth
@@ -40,7 +48,7 @@ public class SecurityConfig {
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             
-            // 👇 CRITICAL LINE: This forces Spring to use your JWT Filter
+            // This forces Spring to use your JWT Filter
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -53,7 +61,6 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
-        // Using full path to avoid conflicts with your local file
         org.springframework.security.authentication.dao.DaoAuthenticationProvider authProvider = 
             new org.springframework.security.authentication.dao.DaoAuthenticationProvider();
         
