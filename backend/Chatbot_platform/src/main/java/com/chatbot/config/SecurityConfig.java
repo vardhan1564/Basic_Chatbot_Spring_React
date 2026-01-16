@@ -30,25 +30,23 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
                 
-                // ADD YOUR VERCEL URLS HERE
+                // Add the exact URL from your screenshot error here
                 config.setAllowedOrigins(List.of(
                     "http://localhost:5173", 
-                    "https://chatbotspring.vercel.app",
-                    "https://chatbotspring-git-main-vardhan-adhelis-projects.vercel.app"
+                    "https://chatbotspringreact.vercel.app", // Found in image_2e5f48.png
+                    "https://chatbotspring.vercel.app"
                 )); 
                 
                 config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(List.of("*"));
-                config.setAllowCredentials(true); // Crucial for JWT and Cookies
+                config.setAllowCredentials(true);
                 return config;
             }))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Allow Login/Register
-                .anyRequest().authenticated() // Block everything else
+                .requestMatchers("/api/auth/**").permitAll() 
+                .anyRequest().authenticated() 
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            
-            // This forces Spring to use your JWT Filter
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
