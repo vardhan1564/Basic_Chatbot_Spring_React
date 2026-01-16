@@ -30,12 +30,14 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
                 
-                // Add the exact URL from your screenshot error here
+                // Inside your SecurityConfig.java
                 config.setAllowedOrigins(List.of(
                     "http://localhost:5173", 
-                    "https://chatbotspringreact.vercel.app", // Found in image_2e5f48.png
-                    "https://chatbotspring.vercel.app"
-                )); 
+                    "https://chatbotspringreact.vercel.app", // Add this exact URL from your screenshot
+                    "https://chatbotspring.vercel.app",
+                    "https://chatbotspringreact-iz3y1f8kg-vardhan-adhelis-projects.vercel.app",
+                    "https://chatbotspringreact-git-main-vardhan-adhelis-projects.vercel.app"
+                ));
                 
                 config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(List.of("*"));
